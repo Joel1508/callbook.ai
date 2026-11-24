@@ -108,10 +108,12 @@ Enriquecimiento (Hunter) de los seis decisores de Addi, Mibanco y Tuya: 2 correo
 - **Superfinanciera**: funcionando en vivo para Mibanco, Tuya, Nu y RappiPay (corte 2026-09-30). **Addi no aparece** en el dataset `rvii-eis8`; su criterio de cartera sigue siendo del analista. Pendiente: confirmar con qué nombre reporta (o si reporta en otro formato) y agregarlo en `fuentes.superfinanciera.entidades`.
 - **PBX**: `pbx` está vacío en `signals.json`; hay que llenarlo con el conmutador corporativo publicado por cada empresa.
 
-## Siguiente fase
+## Siguiente fase (arquitectura prototipada en equipo en una hackathon de GTM)
 
+- **`enrich_company`**: URL de la empresa → Firecrawl → LLM → puntaje ICP validado con esquema (Pydantic aquí, Zod en el prototipo), para cubrir empresas que no vigila la Superfinanciera.
+- **`persona_angle`**: cargo y publicaciones públicas del decisor → dolor de su área y ángulo de venta.
+- **`sequence`**: secuencia de primer contacto (canal, momento, mensaje) que cumple la Ley 2300: solo en horarios permitidos y un canal por semana.
 - **Scraper de vacantes**: fuente `sources/vacantes.py` (LinkedIn Jobs, Computrabajo, Magneto) para cargos de cobranza; una vacante de cobranza es una señal de dolor con fecha.
 - **Prensa**: fuente `sources/prensa.py` sobre RSS de Valora Analitik, Portafolio, La República y LatamFintech, con extracción de cifras de colocación y venta de cartera.
-- **Ranking con LLM**: un paso que lea las señales y proponga la calificación de cada criterio con su porqué y la cita, para que el analista solo apruebe; también redacta el `gancho`.
 - **Sincronización con el CRM**: exportar prospectos, decisores y mensaje a HubSpot o Pipedrive, con deduplicación por dominio y el registro de contactos por semana para hacer cumplir el límite de la Ley 2300.
-- Correr cada semana (cron o GitHub Actions) y alertar cuando un prospecto suba en el ranking.
+- **Corrida semanal con alertas**: correr el oráculo cada semana (cron o GitHub Actions) y avisar cuando un prospecto suba en el ranking.
