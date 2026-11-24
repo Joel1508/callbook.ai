@@ -6,6 +6,6 @@ __pycache__/
 # Datos completos (correos sin enmascarar): nunca al repo
 out/*.csv
 out/*_full.json
-out/.enrich_cache.json
+out/.*_cache.json
 # Wrangler
 .wrangler/

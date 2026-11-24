@@ -19,7 +19,7 @@ from pathlib import Path
 
 import yaml
 
-from . import enrich, outreach, score
+from . import discover, enrich, outreach, score
 from .sources import Signal
 
 
@@ -50,7 +50,10 @@ def collect(icp: dict, only: list[str] | None) -> tuple[list[Signal], list[dict]
     return signals, log
 
 
-def build(icp: dict, signals: list[Signal], do_enrich: bool) -> tuple[list[dict], list[str]]:
+def build(icp: dict, signals: list[Signal], do_enrich: bool, do_discover: bool = True) -> tuple[list[dict], list[str]]:
+    dcfg = icp.get("descubrimiento") or {}
+    budget = discover.Budget(int(dcfg.get("max_llamadas", 3)))
+    min_conf = (icp.get("enriquecimiento") or {}).get("confianza_minima", 70)
     by_co: dict[str, list[Signal]] = defaultdict(list)
     for s in signals:
         by_co[s.empresa].append(s)
@@ -63,6 +66,10 @@ def build(icp: dict, signals: list[Signal], do_enrich: bool) -> tuple[list[dict]
             excluded.append(perfil["nombre"])
             continue
         sc = score.score_company(ss, icp)
+        # Paso previo a enrich: descubrir decisores por dominio y cruzarlos con los conocidos
+        descubiertos = None
+        if do_discover and dcfg and cid in dcfg.get("prospectos", []):
+            descubiertos = discover.discover_company(perfil, dcfg, budget, min_conf)
         decisores = enrich.enrich_company(perfil, icp.get("enriquecimiento", {})) if do_enrich else [
             {**d, "correo": None, "confianza": "no enriquecido", "fuente": None, "linkedin_url": None,
              "dominio": perfil.get("dominio"), "telefono": perfil.get("pbx")} for d in perfil.get("decisores", [])]
@@ -72,6 +79,7 @@ def build(icp: dict, signals: list[Signal], do_enrich: bool) -> tuple[list[dict]
             "puntaje": sc["puntaje"], "desglose": sc["desglose"],
             "senales": [s.to_dict() for s in ss if s.tipo not in ("perfil", "analista")],
             "decisores": decisores,
+            "descubiertos": descubiertos,
             "mensaje": outreach.compose(perfil, principal, icp) if principal else None,
         })
     prospects.sort(key=lambda p: -p["puntaje"])
@@ -88,6 +96,8 @@ def public_copy(doc: dict) -> dict:
             d.pop("evidencia", None)
             d.pop("errores", None)
             d.pop("mx", None)
+        for d in (p.get("descubiertos") or {}).get("personas", []):
+            d["correo"] = enrich.mask(d.get("correo"))
     return pub
 
 
@@ -96,6 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--icp", default="oraculo/icp.yaml")
     ap.add_argument("--out", default="out")
     ap.add_argument("--no-enrich", action="store_true", help="no llama a Hunter/Apollo")
+    ap.add_argument("--no-discover", action="store_true", help="no llama a Hunter Domain Search")
     ap.add_argument("--solo-cache", action="store_true",
                     help="enriquece solo con resultados ya guardados en out/.enrich_cache.json (no gasta créditos)")
     ap.add_argument("--public", default="public", help="carpeta de la demo; recibe una copia de prospects.json")
@@ -110,7 +121,9 @@ def main(argv: list[str] | None = None) -> int:
     signals, log = collect(icp, a.sources.split(",") if a.sources else None)
     if a.solo_cache:
         icp.setdefault("enriquecimiento", {})["solo_cache"] = True
-    prospects, excluded = build(icp, signals, not a.no_enrich)
+        if icp.get("descubrimiento"):
+            icp["descubrimiento"]["solo_cache"] = True
+    prospects, excluded = build(icp, signals, not a.no_enrich, not a.no_discover)
 
     doc = {
         "generado": datetime.now(outreach.TZ).isoformat(timespec="seconds"),
@@ -137,6 +150,15 @@ def main(argv: list[str] | None = None) -> int:
                             d.get("mx_valido"), d.get("cargo_proveedor"), " | ".join(d.get("revisar") or []),
                             d.get("telefono"), bool(d.get("principal")),
                             p["mensaje"]["texto"] if d.get("principal") and p["mensaje"] else ""])
+
+    with open(out / "discovered.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["empresa", "nombre", "cargo", "rol", "correo", "confianza", "verificacion", "linkedin_url", "nuevo", "coincide_con", "posible_coincidencia"])
+        for p in prospects:
+            for d in (p.get("descubiertos") or {}).get("personas", []):
+                w.writerow([p["nombre"], d["nombre"], d["cargo"], d["rol"], d["correo"], d["confianza"],
+                            d["verificacion"], d["linkedin_url"], d["nuevo"], d["coincide_con"],
+                            d.get("posible_coincidencia")])
 
     for x in log:
         print(f"fuente {x['fuente']}: " + (f"{x['senales']} señales" if x["ok"] else f"ERROR {x['error']}"))

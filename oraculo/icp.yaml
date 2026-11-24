@@ -63,6 +63,30 @@ enriquecimiento:
   proveedor: auto          # auto | hunter | apollo  (auto: Hunter y, si no hay correo, Apollo)
   confianza_minima: 70     # bajo este puntaje de Hunter el correo se marca "baja"
 
+# Descubrimiento de decisores por dominio (oraculo/discover.py, Hunter Domain Search)
+descubrimiento:
+  prospectos: [addi, mibanco, tuya]   # ids de data/signals.json
+  max_llamadas: 3                     # tope de llamadas reales por corrida; la caché no cuenta
+  limite: 10                          # resultados por dominio
+  departamentos: [executive, finance, management, operations]
+  palabras_clave: [cobranza, cobranzas, collections, collection, recuperacion, recovery, cartera,
+                   riesgo, riesgos, risk, operaciones, operations, cfo, financiero, financiera, finance,
+                   financial, credito, credit]
+  # Rol según el cargo; se aplica la primera regla que coincide (si ninguna, influenciador).
+  roles:
+    aprobador:
+      alguna: [cfo, ceo, coo, cro, chief, vp, vicepresidente, vicepresidenta, vice president, presidente,
+               president, director financiero, directora financiera, finance director, country manager,
+               chief financial officer]
+    decisor:
+      todas:
+        - [cobranza, cobranzas, collections, collection, recuperacion, recovery, cartera, riesgo, riesgos,
+           risk, operaciones, operations, credito, credit, financiero, finance]
+        - [head, director, directora, gerente, manager, jefe, jefa, lider, lead, leader]
+    influenciador:
+      alguna: [cobranza, cobranzas, collections, collection, recuperacion, recovery, cartera, riesgo,
+               riesgos, risk, operaciones, operations, financiero, finance, analista, analyst]
+
 mensaje:
   # Plantilla del primer contacto. {gancho} es la señal concreta de cada prospecto (data/signals.json).
   plantilla: |
