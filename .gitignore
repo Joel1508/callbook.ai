@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# Datos completos (correos sin enmascarar): nunca al repo
+out/*.csv
+out/*_full.json
+out/.enrich_cache.json
+# Wrangler
+.wrangler/
