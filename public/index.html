@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oráculo de prospección Callbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: analyst's desk — sober, ruled, decisive.
+   IDEA: a planning-office ranking sheet that re-sorts as you change the weights.
+   PICTURE: the ranked prospect table with live score bars is the picture.
+   COLOUR and TYPE: stone ground, black ink, brick accent, white panels; Schibsted Grotesk.
+   LAYOUT: title + pipeline strip, then weights beside ranking, then detail sheet. */
+:root{color-scheme:light dark;--bg:light-dark(#e7e4df,#171513);--ink:light-dark(#111,#eceae6);--mut:light-dark(#5d5a55,#a8a39b);--pan:light-dark(#fff,#211e1b);--rule:light-dark(#cfcac2,#3a3530);--brick:#c8371e;--brick2:light-dark(#f6dcd5,#3d1f18)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Schibsted Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px);max-width:1240px;margin:0 auto}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:6px 0 12px;font-weight:800;text-wrap:balance;max-width:22ch}
+h2{font-size:22px;margin:0 0 10px;font-weight:700}
+.kick{color:var(--mut);font-size:15px;margin:0}
+.lede{max-width:68ch;color:var(--mut);margin:0}
+.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:22px;border:1.5px solid var(--ink);background:var(--pan)}
+.pipe div{padding:12px 14px;border-right:1px solid var(--rule);font-size:14px;line-height:1.35}
+.pipe div:last-child{border-right:0}
+.pipe b{display:block;font-size:15px;margin-bottom:2px}
+.pipe span{color:var(--mut)}
+.grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
+.pan{background:var(--pan);border:1.5px solid var(--ink);padding:18px}
+label{display:block;font-size:14px;margin:12px 0 2px}
+label output{float:right;font-weight:700;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--brick);height:32px}
+.btn{font:600 15px "Schibsted Grotesk",sans-serif;min-height:44px;padding:0 16px;border:1.5px solid var(--ink);background:var(--pan);color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--brick);color:#fff;border-color:var(--brick)}
+.btn:focus-visible,tr:focus-visible{outline:3px solid var(--brick);outline-offset:2px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-weight:700;font-size:13px;color:var(--mut);border-bottom:1.5px solid var(--ink);padding:8px 8px}
+td{border-bottom:1px solid var(--rule);padding:10px 8px;vertical-align:middle}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--brick2)}
+tr.sel{background:var(--brick2)}
+.rk{font-weight:800;font-size:22px;width:44px}
+.nm b{display:block}.nm span{font-size:13px;color:var(--mut)}
+.bar{height:12px;background:var(--rule);position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+tr:nth-child(-n+3) .bar i{background:var(--brick)}
+.sc{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;width:56px;white-space:nowrap}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--brick);padding:1px 7px;margin-left:6px;vertical-align:2px}
+.det{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+.det ul{margin:6px 0 0;padding-left:18px}.det li{margin:4px 0}
+.ppl div{border-bottom:1px solid var(--rule);padding:8px 0}
+.ppl div span{color:var(--mut);font-size:14px;display:block}
+.msg{white-space:pre-wrap;background:var(--bg);border-left:4px solid var(--brick);padding:12px 14px;font-size:15px;margin:8px 0 10px}
+.ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ex span{border:1px solid var(--rule);background:var(--pan);padding:3px 10px;font-size:14px;text-decoration:line-through;color:var(--mut)}
+.src a{color:var(--ink)}
+.note{font-size:13px;color:var(--mut)}
+.ppl a{color:var(--ink);font-size:14px}.conf{font-size:12px;font-weight:700;border:1px solid var(--rule);padding:0 6px;margin-left:6px}
+.err{border-left:4px solid var(--brick);padding:10px 14px;background:var(--pan)}
+.scroll{overflow-x:auto}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.det{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.pipe{grid-template-columns:minmax(0,1fr)}.pipe div{border-right:0;border-bottom:1px solid var(--rule)}.hide{display:none}table{font-size:14px}}
+@media(prefers-reduced-motion:no-preference){.bar i{transition:width .45s ease}}
+</style>
+</head>
+<body>
+<section class="band">
+  <p class="kick">Sebastián Alfonso · Prueba técnica Sales Data Farmer · Callbook AI</p>
+  <h1 id="h1">Oráculo de prospección Callbook</h1>
+  <p class="lede">Este oráculo convierte señales públicas en una lista priorizada de prospectos. Mueve los pesos y el ranking se recalcula. Toca una empresa para ver sus señales, sus decisores y el primer mensaje.</p>
+  <div class="pipe" aria-label="Cómo funciona">
+    <div><b>1 · Señales</b><span>Superfinanciera (datos.gov.co), prensa, vacantes, venta de cartera</span></div>
+    <div><b>2 · Filtro ICP</b><span>Crédito masivo de ticket bajo; excluye clientes actuales</span></div>
+    <div><b>3 · Puntaje</b><span id="pipe3">Criterios ponderados, ajustables</span></div>
+    <div><b>4 · Decisores</b><span>Dominio con MX, correo vía Hunter o Apollo</span></div>
+    <div><b>5 · Mensaje</b><span>Primer contacto con la señal, dentro de la Ley 2300</span></div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="grid">
+    <div class="pan">
+      <h2>Pesos del ICP</h2>
+      <div id="w"></div>
+      <p style="margin:14px 0 0"><button class="btn" id="reset" type="button">Restablecer pesos</button></p>
+      <p class="note" style="margin-top:12px">Cada criterio se califica de 1 a 5 según las señales encontradas. El puntaje va de 0 a 100.</p>
+    </div>
+    <div class="pan">
+      <h2>Ranking de prospectos</h2>
+      <div class="scroll"><table>
+        <thead><tr><th>#</th><th>Empresa</th><th class="hide">Puntaje</th><th style="text-align:right">/100</th></tr></thead>
+        <tbody id="rank"></tbody>
+      </table></div>
+      <p class="note" style="margin:12px 0 0">Excluidos por ser ya clientes de Callbook:</p>
+      <div class="ex" id="ex"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="pan" id="detail" aria-live="polite"></div>
+  <p class="note" style="margin-top:14px" id="foot"></p>
+</section>
+
+<script>
+(async()=>{
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dEl=document.getElementById("detail");
+const url=new URLSearchParams(location.search).get("data")||"./prospects.json";
+let D;
+try{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error(r.status);D=await r.json()}
+catch(e){dEl.innerHTML=`<div class="err"><b>No pude leer ${esc(url)}.</b><br>Corre <code>python -m oraculo.run --icp icp.yaml</code> (escribe <code>public/prospects.json</code>) y sirve la carpeta con <code>python -m http.server 8000 -d public</code>; luego abre <code>http://localhost:8000/</code>.</div>`;return}
+const C=D.criterios.map(c=>({k:c.clave,n:c.nombre,d:c.peso}));
+const P=D.prospectos.map(p=>{const f=[],seen=new Set();p.senales.forEach(s=>{if(s.url&&!seen.has(s.url)){seen.add(s.url);f.push([s.fuente,s.url])}});
+ return{id:p.id,n:p.nombre,t:p.tipo,r:Object.fromEntries(p.desglose.map(x=>[x.criterio,x.calificacion])),o:Object.fromEntries(p.desglose.map(x=>[x.criterio,x.origen])),
+ s:p.senales.map(s=>s.texto),p:p.decisores,m:p.mensaje?p.mensaje.texto:"",slot:p.mensaje&&p.mensaje.enviar_desde,f}});
+const EX=D.excluidos||[];
+const W={};C.forEach(c=>W[c.k]=c.d);
+let sel=P[0]&&P[0].id;
+const wEl=document.getElementById("w"),rEl=document.getElementById("rank");
+document.getElementById("ex").innerHTML=EX.map(e=>`<span>${esc(e)}</span>`).join("");
+document.getElementById("pipe3").textContent=`${C.length} criterios ponderados, ajustables`;
+const gen=new Date(D.generado);
+document.getElementById("foot").textContent=`Generado el ${gen.toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric"})} a partir de fuentes públicas. Cuando la Superfinanciera reporta la entidad, la calificación de cartera sale de sus cifras (crecimiento anual, saldo vencido e ICV); el resto es criterio del analista a partir de las señales. Correos enmascarados en esta demo. Los cargos deben confirmarse en LinkedIn antes del contacto. Solo se usan canales corporativos (Ley 1581 de 2012) y el primer mensaje respeta la Ley 2300 de 2023.`;
+const score=p=>{const tw=C.reduce((a,c)=>a+W[c.k],0)||1;return Math.round(C.reduce((a,c)=>a+W[c.k]*((p.r[c.k]||1)-1)/4,0)/tw*100)};
+function drawW(){wEl.innerHTML=C.map(c=>`<label for="w-${c.k}">${esc(c.n)}<output id="o-${c.k}">${W[c.k]}</output></label><input type="range" id="w-${c.k}" min="0" max="40" step="5" value="${W[c.k]}">`).join("");
+ C.forEach(c=>document.getElementById("w-"+c.k).addEventListener("input",e=>{W[c.k]=+e.target.value;document.getElementById("o-"+c.k).textContent=W[c.k];drawR();drawD()}))}
+function drawR(){const L=P.map(p=>({p,s:score(p)})).sort((a,b)=>b.s-a.s);
+ const top=L.slice(0,3).map(x=>x.p.n.replace(" Colombia",""));
+ document.getElementById("h1").textContent=`${top.slice(0,-1).join(", ")} y ${top.at(-1)} encabezan el pipeline de cobranza tardía en Colombia`;
+ rEl.innerHTML=L.map((x,i)=>`<tr tabindex="0" data-id="${x.p.id}" class="${x.p.id===sel?"sel":""}"><td class="rk">${i+1}</td><td class="nm"><b>${esc(x.p.n)}${i<3?'<span class="tag">Top 3</span>':""}</b><span>${esc(x.p.t)}</span></td><td class="hide" style="width:38%"><div class="bar"><i style="width:${x.s}%"></i></div></td><td class="sc">${x.s}</td></tr>`).join("");
+ rEl.querySelectorAll("tr").forEach(tr=>{const go=()=>{sel=tr.dataset.id;drawR();drawD()};tr.addEventListener("click",go);tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}})})}
+const person=x=>{const bits=[];
+ if(x.correo)bits.push(`${esc(x.correo)}<span class="conf">${esc(x.confianza)} · ${esc(x.fuente)}</span>`);
+ else bits.push(`<span>Correo pendiente${x.mx_valido?` (dominio ${esc(x.dominio)} con MX válido)`:""}</span>`);
+ if(x.linkedin_url)bits.push(`<a href="${esc(x.linkedin_url)}" target="_blank" rel="noopener">LinkedIn</a>`);
+ if(x.telefono)bits.push(`PBX ${esc(x.telefono)}`);
+ const rv=(x.revisar||[]).map(r=>`<span class="note">⚠ ${esc(r)}</span>`).join("");
+ return `<div><b>${esc(x.nombre)}${x.principal?'<span class="tag">Primer contacto</span>':""}</b><span>${esc(x.cargo)}</span><span>${bits.join(" · ")}</span>${rv}</div>`};
+function drawD(){const p=P.find(x=>x.id===sel);if(!p)return;
+ dEl.innerHTML=`<h2>${esc(p.n)} · ${score(p)}/100</h2><div class="det"><div><b>Señales</b><ul>${p.s.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
+ <p style="margin:14px 0 4px"><b>Calificación por criterio</b></p><table><tbody>${C.map(c=>`<tr style="cursor:default"><td>${esc(c.n)}<br><span class="note">${esc(p.o[c.k]||"")}</span></td><td class="sc">${p.r[c.k]||1}/5</td></tr>`).join("")}</tbody></table>
+ <p class="src note" style="margin-top:12px">Fuentes: ${p.f.map(f=>`<a href="${esc(f[1])}" target="_blank" rel="noopener">${esc(f[0])}</a>`).join(" · ")}</p></div>
+ <div><b>Decisores e influenciadores</b><div class="ppl">${p.p.map(person).join("")}</div>
+ <p style="margin:16px 0 0"><b>Primer mensaje sugerido</b></p><div class="msg" id="msg">${esc(p.m)}</div>
+ <button class="btn" id="copy" type="button">Copiar mensaje</button> <span class="note" id="cst"></span>
+ ${p.slot?`<p class="note">Primera ventana de envío permitida: ${esc(new Date(p.slot).toLocaleString("es-CO",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit",timeZone:"America/Bogota"}))} (hora de Bogotá).</p>`:""}</div></div>`;
+ document.getElementById("copy").addEventListener("click",async()=>{const st=document.getElementById("cst");try{await navigator.clipboard.writeText(p.m);st.textContent="Copiado."}catch(e){st.textContent="Selecciona el texto y cópialo."}})}
+document.getElementById("reset").addEventListener("click",()=>{C.forEach(c=>W[c.k]=c.d);drawW();drawR();drawD()});
+drawW();drawR();drawD();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1237 @@
+{
+  "generado": "2026-11-24T14:49:02-05:00",
+  "vendedor": "Callbook AI",
+  "vertical": "Crédito masivo de ticket bajo (BNPL, microcrédito, tarjetas, neobancos)",
+  "pais": "CO",
+  "criterios": [
+    {
+      "clave": "cartera",
+      "nombre": "Volumen y crecimiento de cartera",
+      "peso": 25
+    },
+    {
+      "clave": "dolor",
+      "nombre": "Dolor operativo en cobranza",
+      "peso": 25
+    },
+    {
+      "clave": "simil",
+      "nombre": "Similitud con clientes actuales",
+      "peso": 20
+    },
+    {
+      "clave": "incl",
+      "nombre": "Población poco bancarizada",
+      "peso": 15
+    },
+    {
+      "clave": "ia",
+      "nombre": "Madurez para comprar IA",
+      "peso": 15
+    }
+  ],
+  "excluidos": [
+    "Sistecrédito",
+    "Banco Contactar",
+    "Banco W",
+    "Quipux",
+    "Quipu",
+    "Krediya",
+    "Aviva",
+    "Aseguradora Solidaria",
+    "Kala",
+    "Epik",
+    "Casse"
+  ],
+  "excluidos_encontrados": [],
+  "fuentes": [
+    {
+      "fuente": "manual_signals",
+      "ok": true,
+      "senales": 50
+    },
+    {
+      "fuente": "superfinanciera",
+      "ok": true,
+      "senales": 4
+    }
+  ],
+  "prospectos": [
+    {
+      "id": "addi",
+      "nombre": "Addi",
+      "tipo": "BNPL · compañía de financiamiento",
+      "dominio": "addi.com",
+      "puntaje": 96,
+      "desglose": [
+        {
+          "criterio": "cartera",
+          "nombre": "Volumen y crecimiento de cartera",
+          "peso": 25,
+          "calificacion": 5,
+          "puntos": 25.0,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "Espera colocar $11 billones en 2026, más del doble que en 2025.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Espera colocar $11 billones en crédito en 2026, más del doble que en 2025."
+          ]
+        },
+        {
+          "criterio": "dolor",
+          "nombre": "Dolor operativo en cobranza",
+          "peso": 25,
+          "calificacion": 5,
+          "puntos": 25.0,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "Busca Collections Manager para un equipo propio de ~110 personas.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Busca Collections Manager para un equipo propio de ~110 personas (vacante de julio de 2026).",
+            "Mora a 90 días de 1,1 %, pero sobre ese volumen la cartera tardía crece en pesos."
+          ]
+        },
+        {
+          "criterio": "simil",
+          "nombre": "Similitud con clientes actuales",
+          "peso": 20,
+          "calificacion": 5,
+          "puntos": 20.0,
+          "max_puntos": 20.0,
+          "origen": "Criterio del analista",
+          "porque": "Su par Sistecrédito ya es cliente de Callbook.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Su par Sistecrédito ya es cliente de Callbook."
+          ]
+        },
+        {
+          "criterio": "incl",
+          "nombre": "Población poco bancarizada",
+          "peso": 15,
+          "calificacion": 4,
+          "puntos": 11.2,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Crédito en punto de venta para clientes con poco historial.",
+          "calificacion_analista": 4,
+          "evidencia": []
+        },
+        {
+          "criterio": "ia",
+          "nombre": "Madurez para comprar IA",
+          "peso": 15,
+          "calificacion": 5,
+          "puntos": 15.0,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Su Serie D está orientada a IA y ya vende cartera como activo.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Vendió cartera a Goldman Sachs: ya piensa la cartera como un activo."
+          ]
+        }
+      ],
+      "senales": [
+        {
+          "empresa": "addi",
+          "tipo": "prensa",
+          "texto": "Espera colocar $11 billones en crédito en 2026, más del doble que en 2025.",
+          "fuente": "LatamFintech: Serie D de Addi",
+          "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia",
+          "fecha": null,
+          "criterio": "cartera",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "addi",
+          "tipo": "vacante",
+          "texto": "Busca Collections Manager para un equipo propio de ~110 personas (vacante de julio de 2026).",
+          "fuente": "Vacante Collections Manager",
+          "url": "https://swooped.co/job-postings/collections-manager-bogota-addi-5a0d6",
+          "fecha": "2026-07",
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "addi",
+          "tipo": "venta_cartera",
+          "texto": "Vendió cartera a Goldman Sachs: ya piensa la cartera como un activo.",
+          "fuente": "LatamFintech: Serie D de Addi",
+          "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia",
+          "fecha": null,
+          "criterio": "ia",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "addi",
+          "tipo": "prensa",
+          "texto": "Mora a 90 días de 1,1 %, pero sobre ese volumen la cartera tardía crece en pesos.",
+          "fuente": "LatamFintech: Serie D de Addi",
+          "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia",
+          "fecha": null,
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "addi",
+          "tipo": "similitud",
+          "texto": "Su par Sistecrédito ya es cliente de Callbook.",
+          "fuente": "Base de clientes Callbook",
+          "url": null,
+          "fecha": null,
+          "criterio": "simil",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        }
+      ],
+      "decisores": [
+        {
+          "nombre": "Jessica Alvira",
+          "cargo": "Head of Collections · antes directora de cobro prejurídico y jurídico en Mibanco",
+          "principal": true,
+          "correo": "j***@addi.com",
+          "confianza": "alta",
+          "puntaje_confianza": 96,
+          "fuente": "hunter",
+          "linkedin_url": "https://www.linkedin.com/in/jessica-alvira-a11b131b9",
+          "dominio": "addi.com",
+          "mx_valido": true,
+          "verificacion": "valid",
+          "cargo_proveedor": "Collections Manager",
+          "cargo_coincide": true,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Claudia Tabares",
+          "cargo": "Líder de operaciones de Collections",
+          "correo": "c***@addi.com",
+          "confianza": "alta",
+          "puntaje_confianza": 98,
+          "fuente": "hunter",
+          "linkedin_url": "https://www.linkedin.com/in/claudia-milena-tabares-2aab59144",
+          "dominio": "addi.com",
+          "mx_valido": true,
+          "verificacion": "valid",
+          "cargo_proveedor": "Collections Manager",
+          "cargo_coincide": true,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Santiago Suárez",
+          "cargo": "Cofundador y CEO",
+          "correo": null,
+          "confianza": "no enriquecido",
+          "puntaje_confianza": null,
+          "fuente": null,
+          "linkedin_url": null,
+          "dominio": "addi.com",
+          "mx_valido": true,
+          "cargo_coincide": null,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        }
+      ],
+      "mensaje": {
+        "para": "Jessica Alvira",
+        "cargo": "Head of Collections · antes directora de cobro prejurídico y jurídico en Mibanco",
+        "canal": "correo corporativo",
+        "asunto": "Addi y la cartera tardía",
+        "texto": "Hola Jessica: Vi que Addi va a colocar más del doble de crédito este año y que están contratando para liderar un equipo de cobranza de más de 100 personas. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T14:49:00-05:00",
+        "max_contactos_por_semana": 1,
+        "cumplimiento": [
+          {
+            "regla": "Identifica a quien escribe y a su empresa",
+            "ok": true
+          },
+          {
+            "regla": "Ofrece una forma clara de no recibir más mensajes",
+            "ok": true
+          },
+          {
+            "regla": "Solo canal corporativo (dominio de la empresa, nunca correo personal)",
+            "ok": true
+          },
+          {
+            "regla": "Explica por qué se le contacta (cargo relacionado)",
+            "ok": true
+          },
+          {
+            "regla": "Sin lenguaje de presión ni amenazas",
+            "ok": true
+          },
+          {
+            "regla": "Breve (menos de 120 palabras)",
+            "ok": true
+          },
+          {
+            "regla": "Envío dentro de la ventana horaria y máximo 1 contacto por semana",
+            "ok": true
+          }
+        ],
+        "cumple": true
+      },
+      "rank": 1
+    },
+    {
+      "id": "mibanco",
+      "nombre": "Mibanco Colombia",
+      "tipo": "Microcrédito · Grupo Credicorp",
+      "dominio": "mibanco.com.co",
+      "puntaje": 86,
+      "desglose": [
+        {
+          "criterio": "cartera",
+          "nombre": "Volumen y crecimiento de cartera",
+          "peso": 25,
+          "calificacion": 5,
+          "puntos": 25.0,
+          "max_puntos": 25.0,
+          "origen": "Superfinanciera (datos.gov.co)",
+          "porque": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,68 billones, +47.9 % anual; saldo vencido $127 mil millones (ICV 4.7 %). consumo: $3 mil millones (+34.1 % anual), ICV 0.8 %; microcredito: $2,68 billones (+47.9 % anual), ICV 4.8 %.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Segundo jugador de microcrédito del país, con ~$2,6 billones de cartera.",
+            "Su cartera creció 44,5 % anual en el primer trimestre de 2026.",
+            "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,68 billones, +47.9 % anual; saldo vencido $127 mil millones (ICV 4.7 %). consumo: $3 mil millones (+34.1 % anual), ICV 0.8 %; microcredito: $2,68 billones (+47.9 % anual), ICV 4.8 %."
+          ]
+        },
+        {
+          "criterio": "dolor",
+          "nombre": "Dolor operativo en cobranza",
+          "peso": 25,
+          "calificacion": 4,
+          "puntos": 18.8,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "Clientes rurales difíciles de ubicar.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Atiende clientes rurales difíciles de ubicar, justo donde sirve investigar antes de contactar."
+          ]
+        },
+        {
+          "criterio": "simil",
+          "nombre": "Similitud con clientes actuales",
+          "peso": 20,
+          "calificacion": 5,
+          "puntos": 20.0,
+          "max_puntos": 20.0,
+          "origen": "Criterio del analista",
+          "porque": "Gemelo de Banco W y Banco Contactar, clientes de Callbook.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Es el gemelo de Banco W y Banco Contactar, que ya son clientes de Callbook."
+          ]
+        },
+        {
+          "criterio": "incl",
+          "nombre": "Población poco bancarizada",
+          "peso": 15,
+          "calificacion": 5,
+          "puntos": 15.0,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Microempresarios con baja bancarización.",
+          "calificacion_analista": 5,
+          "evidencia": []
+        },
+        {
+          "criterio": "ia",
+          "nombre": "Madurez para comprar IA",
+          "peso": 15,
+          "calificacion": 3,
+          "puntos": 7.5,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Su Director de Operaciones participa en foros de cobranza.",
+          "calificacion_analista": 3,
+          "evidencia": [
+            "Su Director de Operaciones participa en foros de cobranza (Collections Symphony)."
+          ]
+        }
+      ],
+      "senales": [
+        {
+          "empresa": "mibanco",
+          "tipo": "prensa",
+          "texto": "Segundo jugador de microcrédito del país, con ~$2,6 billones de cartera.",
+          "fuente": "Valora Analitik: Credicorp y Mibanco",
+          "url": "https://www.valoraanalitik.com/?p=582133",
+          "fecha": null,
+          "criterio": "cartera",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "mibanco",
+          "tipo": "prensa",
+          "texto": "Su cartera creció 44,5 % anual en el primer trimestre de 2026.",
+          "fuente": "Valora Analitik: metas 2026",
+          "url": "https://www.valoraanalitik.com/mibanco-colombia-expectativas-2026/",
+          "fecha": null,
+          "criterio": "cartera",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "mibanco",
+          "tipo": "similitud",
+          "texto": "Es el gemelo de Banco W y Banco Contactar, que ya son clientes de Callbook.",
+          "fuente": "Base de clientes Callbook",
+          "url": null,
+          "fecha": null,
+          "criterio": "simil",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "mibanco",
+          "tipo": "prensa",
+          "texto": "Atiende clientes rurales difíciles de ubicar, justo donde sirve investigar antes de contactar.",
+          "fuente": "Valora Analitik: Credicorp y Mibanco",
+          "url": "https://www.valoraanalitik.com/?p=582133",
+          "fecha": null,
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "mibanco",
+          "tipo": "evento",
+          "texto": "Su Director de Operaciones participa en foros de cobranza (Collections Symphony).",
+          "fuente": "Collections Symphony",
+          "url": null,
+          "fecha": null,
+          "criterio": "ia",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "mibanco",
+          "tipo": "cartera_sfc",
+          "texto": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,68 billones, +47.9 % anual; saldo vencido $127 mil millones (ICV 4.7 %). consumo: $3 mil millones (+34.1 % anual), ICV 0.8 %; microcredito: $2,68 billones (+47.9 % anual), ICV 4.8 %.",
+          "fuente": "Superfinanciera (datos.gov.co)",
+          "url": "https://www.datos.gov.co/d/rvii-eis8",
+          "fecha": "2026-09-30",
+          "criterio": "cartera",
+          "calificacion": 5,
+          "cuantitativa": true,
+          "datos": {
+            "entidad": "Mibanco S.A.",
+            "corte": "2026-09-30",
+            "corte_anterior": "2025-09-30",
+            "grupos": {
+              "consumo": {
+                "saldo": 2967440163,
+                "saldo_vencido": 24438530,
+                "icv_pct": 0.82,
+                "clientes_mora": 3,
+                "saldo_anio_anterior": 2212482902,
+                "crecimiento_anual_pct": 34.1
+              },
+              "microcredito": {
+                "saldo": 2680196936196,
+                "saldo_vencido": 127202757344,
+                "icv_pct": 4.75,
+                "clientes_mora": 21250,
+                "saldo_anio_anterior": 1811956736210,
+                "crecimiento_anual_pct": 47.9
+              }
+            },
+            "total": {
+              "saldo": 2683164376359,
+              "saldo_vencido": 127227195874,
+              "icv_pct": 4.74,
+              "crecimiento_anual_pct": 47.9
+            }
+          }
+        }
+      ],
+      "decisores": [
+        {
+          "nombre": "Jorge Borrero",
+          "cargo": "Vicepresidente de Riesgos",
+          "correo": "j***@mibanco.com.co",
+          "confianza": "media",
+          "puntaje_confianza": 81,
+          "fuente": "hunter",
+          "linkedin_url": "https://www.linkedin.com/in/jorge-borrero-57380111",
+          "dominio": "mibanco.com.co",
+          "mx_valido": true,
+          "verificacion": "accept_all",
+          "cargo_proveedor": "Vice President of Risk",
+          "cargo_coincide": true,
+          "revisar": [
+            "El servidor acepta cualquier dirección: correo inferido por patrón, no verificado"
+          ],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Roderick Luna",
+          "cargo": "Gerente de Riesgo de Crédito",
+          "correo": null,
+          "confianza": "no enriquecido",
+          "puntaje_confianza": null,
+          "fuente": null,
+          "linkedin_url": null,
+          "dominio": "mibanco.com.co",
+          "mx_valido": true,
+          "cargo_coincide": null,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Gerardo Hernández",
+          "cargo": "Director de Operaciones",
+          "principal": true,
+          "correo": "g***@mibanco.com.co",
+          "confianza": "media",
+          "puntaje_confianza": 83,
+          "fuente": "hunter",
+          "linkedin_url": null,
+          "dominio": "mibanco.com.co",
+          "mx_valido": true,
+          "verificacion": "accept_all",
+          "cargo_coincide": null,
+          "revisar": [
+            "El servidor acepta cualquier dirección: correo inferido por patrón, no verificado"
+          ],
+          "telefono": null,
+          "telefono_tipo": null
+        }
+      ],
+      "mensaje": {
+        "para": "Gerardo Hernández",
+        "cargo": "Director de Operaciones",
+        "canal": "correo corporativo",
+        "asunto": "Mibanco Colombia y la cartera tardía",
+        "texto": "Hola Gerardo: Mibanco creció su cartera más de 40 % en el último año, y ese crecimiento llega a mora tardía en 12 a 18 meses. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T14:49:00-05:00",
+        "max_contactos_por_semana": 1,
+        "cumplimiento": [
+          {
+            "regla": "Identifica a quien escribe y a su empresa",
+            "ok": true
+          },
+          {
+            "regla": "Ofrece una forma clara de no recibir más mensajes",
+            "ok": true
+          },
+          {
+            "regla": "Solo canal corporativo (dominio de la empresa, nunca correo personal)",
+            "ok": true
+          },
+          {
+            "regla": "Explica por qué se le contacta (cargo relacionado)",
+            "ok": true
+          },
+          {
+            "regla": "Sin lenguaje de presión ni amenazas",
+            "ok": true
+          },
+          {
+            "regla": "Breve (menos de 120 palabras)",
+            "ok": true
+          },
+          {
+            "regla": "Envío dentro de la ventana horaria y máximo 1 contacto por semana",
+            "ok": true
+          }
+        ],
+        "cumple": true
+      },
+      "rank": 2
+    },
+    {
+      "id": "tuya",
+      "nombre": "Tuya",
+      "tipo": "Tarjeta Éxito · Grupo Éxito y Bancolombia",
+      "dominio": "tuya.com.co",
+      "puntaje": 79,
+      "desglose": [
+        {
+          "criterio": "cartera",
+          "nombre": "Volumen y crecimiento de cartera",
+          "peso": 25,
+          "calificacion": 4,
+          "puntos": 18.8,
+          "max_puntos": 25.0,
+          "origen": "Superfinanciera (datos.gov.co)",
+          "porque": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,23 billones, +15.3 % anual; saldo vencido $109 mil millones (ICV 4.9 %). consumo: $2,23 billones (+15.3 % anual), ICV 4.9 %.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,23 billones, +15.3 % anual; saldo vencido $109 mil millones (ICV 4.9 %). consumo: $2,23 billones (+15.3 % anual), ICV 4.9 %."
+          ]
+        },
+        {
+          "criterio": "dolor",
+          "nombre": "Dolor operativo en cobranza",
+          "peso": 25,
+          "calificacion": 4,
+          "puntos": 18.8,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "La cartera tardía no se autogestiona.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "La oportunidad es la cartera tardía que no se autogestiona."
+          ]
+        },
+        {
+          "criterio": "simil",
+          "nombre": "Similitud con clientes actuales",
+          "peso": 20,
+          "calificacion": 4,
+          "puntos": 15.0,
+          "max_puntos": 20.0,
+          "origen": "Criterio del analista",
+          "porque": "Crédito masivo de ticket bajo, como Sistecrédito.",
+          "calificacion_analista": 4,
+          "evidencia": []
+        },
+        {
+          "criterio": "incl",
+          "nombre": "Población poco bancarizada",
+          "peso": 15,
+          "calificacion": 4,
+          "puntos": 11.2,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Para ~40 % de sus clientes es su primer producto financiero.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Para ~40 % de sus clientes, la tarjeta Éxito es su primer producto financiero.",
+            "62 % de los clientes de la Éxito Mastercard gana menos de 2 SMLV."
+          ]
+        },
+        {
+          "criterio": "ia",
+          "nombre": "Madurez para comprar IA",
+          "peso": 15,
+          "calificacion": 5,
+          "puntos": 15.0,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Ya recauda 47 % por autogestión digital con IA.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Ya recauda 47 % de su cobranza por autogestión digital con IA: es un comprador validado."
+          ]
+        }
+      ],
+      "senales": [
+        {
+          "empresa": "tuya",
+          "tipo": "prensa",
+          "texto": "Para ~40 % de sus clientes, la tarjeta Éxito es su primer producto financiero.",
+          "fuente": "Portafolio: entrevista a Tuya",
+          "url": "https://www.portafolio.co/negocios/tenemos-potencial-para-llegar-a-8-millones-de-clientes-tuya-513921",
+          "fecha": null,
+          "criterio": "incl",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "tuya",
+          "tipo": "prensa",
+          "texto": "62 % de los clientes de la Éxito Mastercard gana menos de 2 SMLV.",
+          "fuente": "Portafolio: entrevista a Tuya",
+          "url": "https://www.portafolio.co/negocios/tenemos-potencial-para-llegar-a-8-millones-de-clientes-tuya-513921",
+          "fecha": null,
+          "criterio": "incl",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "tuya",
+          "tipo": "prensa",
+          "texto": "Ya recauda 47 % de su cobranza por autogestión digital con IA: es un comprador validado.",
+          "fuente": "Impacto TIC: cobranza con IA en Tuya",
+          "url": "https://impactotic.co/?p=111345",
+          "fecha": null,
+          "criterio": "ia",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "tuya",
+          "tipo": "analisis",
+          "texto": "La oportunidad es la cartera tardía que no se autogestiona.",
+          "fuente": "Análisis propio",
+          "url": null,
+          "fecha": null,
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "tuya",
+          "tipo": "cartera_sfc",
+          "texto": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $2,23 billones, +15.3 % anual; saldo vencido $109 mil millones (ICV 4.9 %). consumo: $2,23 billones (+15.3 % anual), ICV 4.9 %.",
+          "fuente": "Superfinanciera (datos.gov.co)",
+          "url": "https://www.datos.gov.co/d/rvii-eis8",
+          "fecha": "2026-09-30",
+          "criterio": "cartera",
+          "calificacion": 4,
+          "cuantitativa": true,
+          "datos": {
+            "entidad": "Tuya",
+            "corte": "2026-09-30",
+            "corte_anterior": "2025-09-30",
+            "grupos": {
+              "consumo": {
+                "saldo": 2232488848650,
+                "saldo_vencido": 108594292299,
+                "icv_pct": 4.86,
+                "clientes_mora": 6823,
+                "saldo_anio_anterior": 1935669079518,
+                "crecimiento_anual_pct": 15.3
+              }
+            },
+            "total": {
+              "saldo": 2232488848650,
+              "saldo_vencido": 108594292299,
+              "icv_pct": 4.86,
+              "crecimiento_anual_pct": 15.3
+            }
+          }
+        }
+      ],
+      "decisores": [
+        {
+          "nombre": "Natalia Serna",
+          "cargo": "VP de Asuntos Corporativos y Cobranza",
+          "principal": true,
+          "correo": "n***@tuya.com.co",
+          "confianza": "baja",
+          "puntaje_confianza": 80,
+          "fuente": "hunter",
+          "linkedin_url": "https://www.linkedin.com/in/natalia-serna-0064a9304",
+          "dominio": "tuya.com.co",
+          "mx_valido": true,
+          "verificacion": "accept_all",
+          "cargo_proveedor": "Fraud Detection Assistant",
+          "cargo_coincide": false,
+          "revisar": [
+            "El proveedor reporta otro cargo (Fraud Detection Assistant): posible homónimo; confirmar en LinkedIn",
+            "El servidor acepta cualquier dirección: correo inferido por patrón, no verificado"
+          ],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Juan Diego Giraldo",
+          "cargo": "Cobranzas",
+          "correo": "j***@tuya.com.co",
+          "confianza": "media",
+          "puntaje_confianza": 81,
+          "fuente": "hunter",
+          "linkedin_url": null,
+          "dominio": "tuya.com.co",
+          "mx_valido": true,
+          "verificacion": "accept_all",
+          "cargo_coincide": null,
+          "revisar": [
+            "El servidor acepta cualquier dirección: correo inferido por patrón, no verificado"
+          ],
+          "telefono": null,
+          "telefono_tipo": null
+        },
+        {
+          "nombre": "Carlos Iván Villegas",
+          "cargo": "CEO",
+          "correo": null,
+          "confianza": "no enriquecido",
+          "puntaje_confianza": null,
+          "fuente": null,
+          "linkedin_url": null,
+          "dominio": "tuya.com.co",
+          "mx_valido": true,
+          "cargo_coincide": null,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        }
+      ],
+      "mensaje": {
+        "para": "Natalia Serna",
+        "cargo": "VP de Asuntos Corporativos y Cobranza",
+        "canal": "correo corporativo",
+        "asunto": "Tuya y la cartera tardía",
+        "texto": "Hola Natalia: Tuya ya recauda casi la mitad de su cobranza por autogestión digital, algo muy poco común en el mercado; la parte que no se autogestiona suele ser la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T14:49:00-05:00",
+        "max_contactos_por_semana": 1,
+        "cumplimiento": [
+          {
+            "regla": "Identifica a quien escribe y a su empresa",
+            "ok": true
+          },
+          {
+            "regla": "Ofrece una forma clara de no recibir más mensajes",
+            "ok": true
+          },
+          {
+            "regla": "Solo canal corporativo (dominio de la empresa, nunca correo personal)",
+            "ok": true
+          },
+          {
+            "regla": "Explica por qué se le contacta (cargo relacionado)",
+            "ok": true
+          },
+          {
+            "regla": "Sin lenguaje de presión ni amenazas",
+            "ok": true
+          },
+          {
+            "regla": "Breve (menos de 120 palabras)",
+            "ok": true
+          },
+          {
+            "regla": "Envío dentro de la ventana horaria y máximo 1 contacto por semana",
+            "ok": true
+          }
+        ],
+        "cumple": true
+      },
+      "rank": 3
+    },
+    {
+      "id": "nu",
+      "nombre": "Nu Colombia",
+      "tipo": "Neobanco · tarjeta de crédito",
+      "dominio": "nu.com.co",
+      "puntaje": 74,
+      "desglose": [
+        {
+          "criterio": "cartera",
+          "nombre": "Volumen y crecimiento de cartera",
+          "peso": 25,
+          "calificacion": 5,
+          "puntos": 25.0,
+          "max_puntos": 25.0,
+          "origen": "Superfinanciera (datos.gov.co)",
+          "porque": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $3,96 billones, +79.9 % anual; saldo vencido $144 mil millones (ICV 3.6 %). consumo: $3,96 billones (+79.9 % anual), ICV 3.6 %.",
+          "calificacion_analista": 5,
+          "evidencia": [
+            "Más de 5 millones de clientes en Colombia.",
+            "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $3,96 billones, +79.9 % anual; saldo vencido $144 mil millones (ICV 3.6 %). consumo: $3,96 billones (+79.9 % anual), ICV 3.6 %."
+          ]
+        },
+        {
+          "criterio": "dolor",
+          "nombre": "Dolor operativo en cobranza",
+          "peso": 25,
+          "calificacion": 3,
+          "puntos": 12.5,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "Probable que construya cobranza internamente.",
+          "calificacion_analista": 3,
+          "evidencia": [
+            "Riesgo: es probable que construya su cobranza internamente."
+          ]
+        },
+        {
+          "criterio": "simil",
+          "nombre": "Similitud con clientes actuales",
+          "peso": 20,
+          "calificacion": 3,
+          "puntos": 10.0,
+          "max_puntos": 20.0,
+          "origen": "Criterio del analista",
+          "porque": "Neobanco; distinto a los clientes actuales.",
+          "calificacion_analista": 3,
+          "evidencia": []
+        },
+        {
+          "criterio": "incl",
+          "nombre": "Población poco bancarizada",
+          "peso": 15,
+          "calificacion": 4,
+          "puntos": 11.2,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "~1 millón recibió su primera tarjeta con Nu.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Cerca de 1 millón de personas recibió con Nu su primera tarjeta de crédito.",
+            "Tiene una tarjeta, Abrecaminos, para quienes la banca tradicional suele rechazar."
+          ]
+        },
+        {
+          "criterio": "ia",
+          "nombre": "Madurez para comprar IA",
+          "peso": 15,
+          "calificacion": 5,
+          "puntos": 15.0,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Empresa nativa digital.",
+          "calificacion_analista": 5,
+          "evidencia": []
+        }
+      ],
+      "senales": [
+        {
+          "empresa": "nu",
+          "tipo": "prensa",
+          "texto": "Más de 5 millones de clientes en Colombia.",
+          "fuente": "Nu: cinco años en Colombia",
+          "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/",
+          "fecha": null,
+          "criterio": "cartera",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "nu",
+          "tipo": "prensa",
+          "texto": "Cerca de 1 millón de personas recibió con Nu su primera tarjeta de crédito.",
+          "fuente": "Nu: cinco años en Colombia",
+          "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/",
+          "fecha": null,
+          "criterio": "incl",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "nu",
+          "tipo": "prensa",
+          "texto": "Tiene una tarjeta, Abrecaminos, para quienes la banca tradicional suele rechazar.",
+          "fuente": "Nu: cinco años en Colombia",
+          "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/",
+          "fecha": null,
+          "criterio": "incl",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "nu",
+          "tipo": "analisis",
+          "texto": "Riesgo: es probable que construya su cobranza internamente.",
+          "fuente": "Análisis propio",
+          "url": null,
+          "fecha": null,
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "nu",
+          "tipo": "cartera_sfc",
+          "texto": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $3,96 billones, +79.9 % anual; saldo vencido $144 mil millones (ICV 3.6 %). consumo: $3,96 billones (+79.9 % anual), ICV 3.6 %.",
+          "fuente": "Superfinanciera (datos.gov.co)",
+          "url": "https://www.datos.gov.co/d/rvii-eis8",
+          "fecha": "2026-09-30",
+          "criterio": "cartera",
+          "calificacion": 5,
+          "cuantitativa": true,
+          "datos": {
+            "entidad": "Nu O Nu Financiera",
+            "corte": "2026-09-30",
+            "corte_anterior": "2025-09-30",
+            "grupos": {
+              "consumo": {
+                "saldo": 3961981211084,
+                "saldo_vencido": 143879492537,
+                "icv_pct": 3.63,
+                "clientes_mora": 2966,
+                "saldo_anio_anterior": 2202372138526,
+                "crecimiento_anual_pct": 79.9
+              }
+            },
+            "total": {
+              "saldo": 3961981211084,
+              "saldo_vencido": 143879492537,
+              "icv_pct": 3.63,
+              "crecimiento_anual_pct": 79.9
+            }
+          }
+        }
+      ],
+      "decisores": [
+        {
+          "nombre": "Marcela Torres",
+          "cargo": "Gerente general de Nu Colombia",
+          "principal": true,
+          "correo": null,
+          "confianza": "no enriquecido",
+          "puntaje_confianza": null,
+          "fuente": null,
+          "linkedin_url": null,
+          "dominio": "nu.com.co",
+          "mx_valido": true,
+          "cargo_coincide": null,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        }
+      ],
+      "mensaje": {
+        "para": "Marcela Torres",
+        "cargo": "Gerente general de Nu Colombia",
+        "canal": "correo corporativo",
+        "asunto": "Nu Colombia y la cartera tardía",
+        "texto": "Hola Marcela: Nu le dio su primera tarjeta a cerca de un millón de colombianos, y esos clientes sin historial necesitan otra cobranza cuando caen en mora tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T14:49:00-05:00",
+        "max_contactos_por_semana": 1,
+        "cumplimiento": [
+          {
+            "regla": "Identifica a quien escribe y a su empresa",
+            "ok": true
+          },
+          {
+            "regla": "Ofrece una forma clara de no recibir más mensajes",
+            "ok": true
+          },
+          {
+            "regla": "Solo canal corporativo (dominio de la empresa, nunca correo personal)",
+            "ok": true
+          },
+          {
+            "regla": "Explica por qué se le contacta (cargo relacionado)",
+            "ok": true
+          },
+          {
+            "regla": "Sin lenguaje de presión ni amenazas",
+            "ok": true
+          },
+          {
+            "regla": "Breve (menos de 120 palabras)",
+            "ok": true
+          },
+          {
+            "regla": "Envío dentro de la ventana horaria y máximo 1 contacto por semana",
+            "ok": true
+          }
+        ],
+        "cumple": true
+      },
+      "rank": 4
+    },
+    {
+      "id": "rappipay",
+      "nombre": "RappiPay",
+      "tipo": "Fintech · tarjeta y crédito",
+      "dominio": "rappipay.com",
+      "puntaje": 60,
+      "desglose": [
+        {
+          "criterio": "cartera",
+          "nombre": "Volumen y crecimiento de cartera",
+          "peso": 25,
+          "calificacion": 3,
+          "puntos": 12.5,
+          "max_puntos": 25.0,
+          "origen": "Superfinanciera (datos.gov.co)",
+          "porque": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $217 mil millones, +1043.9 % anual; saldo vencido $6 mil millones (ICV 3.0 %). consumo: $217 mil millones (+1043.9 % anual), ICV 3.0 %.",
+          "calificacion_analista": 3,
+          "evidencia": [
+            "Crédito digital de consumo con alta frecuencia de uso.",
+            "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $217 mil millones, +1043.9 % anual; saldo vencido $6 mil millones (ICV 3.0 %). consumo: $217 mil millones (+1043.9 % anual), ICV 3.0 %."
+          ]
+        },
+        {
+          "criterio": "dolor",
+          "nombre": "Dolor operativo en cobranza",
+          "peso": 25,
+          "calificacion": 4,
+          "puntos": 18.8,
+          "max_puntos": 25.0,
+          "origen": "Criterio del analista",
+          "porque": "Está construyendo el área de cobranza.",
+          "calificacion_analista": 4,
+          "evidencia": [
+            "Contrató como gerente de cobranzas a un exdirector de cobranza de Banco de Bogotá: está construyendo el área."
+          ]
+        },
+        {
+          "criterio": "simil",
+          "nombre": "Similitud con clientes actuales",
+          "peso": 20,
+          "calificacion": 3,
+          "puntos": 10.0,
+          "max_puntos": 20.0,
+          "origen": "Criterio del analista",
+          "porque": "Fintech de consumo.",
+          "calificacion_analista": 3,
+          "evidencia": []
+        },
+        {
+          "criterio": "incl",
+          "nombre": "Población poco bancarizada",
+          "peso": 15,
+          "calificacion": 3,
+          "puntos": 7.5,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Usuarios urbanos con historial mixto.",
+          "calificacion_analista": 3,
+          "evidencia": []
+        },
+        {
+          "criterio": "ia",
+          "nombre": "Madurez para comprar IA",
+          "peso": 15,
+          "calificacion": 4,
+          "puntos": 11.2,
+          "max_puntos": 15.0,
+          "origen": "Criterio del analista",
+          "porque": "Empresa tecnológica.",
+          "calificacion_analista": 4,
+          "evidencia": []
+        }
+      ],
+      "senales": [
+        {
+          "empresa": "rappipay",
+          "tipo": "prensa",
+          "texto": "Contrató como gerente de cobranzas a un exdirector de cobranza de Banco de Bogotá: está construyendo el área.",
+          "fuente": "Ciclo de Riesgo: movidas del sector",
+          "url": "https://www.cicloderiesgo.com/colombia/foco/movida",
+          "fecha": null,
+          "criterio": "dolor",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "rappipay",
+          "tipo": "analisis",
+          "texto": "Crédito digital de consumo con alta frecuencia de uso.",
+          "fuente": "Análisis propio",
+          "url": null,
+          "fecha": null,
+          "criterio": "cartera",
+          "calificacion": null,
+          "cuantitativa": false,
+          "datos": {}
+        },
+        {
+          "empresa": "rappipay",
+          "tipo": "cartera_sfc",
+          "texto": "Superfinanciera, corte 2026-09-30: cartera de consumo y microcrédito $217 mil millones, +1043.9 % anual; saldo vencido $6 mil millones (ICV 3.0 %). consumo: $217 mil millones (+1043.9 % anual), ICV 3.0 %.",
+          "fuente": "Superfinanciera (datos.gov.co)",
+          "url": "https://www.datos.gov.co/d/rvii-eis8",
+          "fecha": "2026-09-30",
+          "criterio": "cartera",
+          "calificacion": 3,
+          "cuantitativa": true,
+          "datos": {
+            "entidad": "\"Rappipay\"",
+            "corte": "2026-09-30",
+            "corte_anterior": "2025-09-30",
+            "grupos": {
+              "consumo": {
+                "saldo": 216959623364,
+                "saldo_vencido": 6428452055,
+                "icv_pct": 2.96,
+                "clientes_mora": 0,
+                "saldo_anio_anterior": 18966804480,
+                "crecimiento_anual_pct": 1043.9
+              }
+            },
+            "total": {
+              "saldo": 216959623364,
+              "saldo_vencido": 6428452055,
+              "icv_pct": 2.96,
+              "crecimiento_anual_pct": 1043.9
+            }
+          }
+        }
+      ],
+      "decisores": [
+        {
+          "nombre": "Mauricio Bohórquez",
+          "cargo": "Gerente de Cobranzas",
+          "principal": true,
+          "correo": null,
+          "confianza": "no enriquecido",
+          "puntaje_confianza": null,
+          "fuente": null,
+          "linkedin_url": null,
+          "dominio": "rappipay.com",
+          "mx_valido": true,
+          "cargo_coincide": null,
+          "revisar": [],
+          "telefono": null,
+          "telefono_tipo": null
+        }
+      ],
+      "mensaje": {
+        "para": "Mauricio Bohórquez",
+        "cargo": "Gerente de Cobranzas",
+        "canal": "correo corporativo",
+        "asunto": "RappiPay y la cartera tardía",
+        "texto": "Hola Mauricio: Vi que está armando el área de cobranza de RappiPay; antes de crecer el equipo, puede valer la pena probar agentes de IA en la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T14:49:00-05:00",
+        "max_contactos_por_semana": 1,
+        "cumplimiento": [
+          {
+            "regla": "Identifica a quien escribe y a su empresa",
+            "ok": true
+          },
+          {
+            "regla": "Ofrece una forma clara de no recibir más mensajes",
+            "ok": true
+          },
+          {
+            "regla": "Solo canal corporativo (dominio de la empresa, nunca correo personal)",
+            "ok": true
+          },
+          {
+            "regla": "Explica por qué se le contacta (cargo relacionado)",
+            "ok": true
+          },
+          {
+            "regla": "Sin lenguaje de presión ni amenazas",
+            "ok": true
+          },
+          {
+            "regla": "Breve (menos de 120 palabras)",
+            "ok": true
+          },
+          {
+            "regla": "Envío dentro de la ventana horaria y máximo 1 contacto por semana",
+            "ok": true
+          }
+        ],
+        "cumple": true
+      },
+      "rank": 5
+    }
+  ]
+}
