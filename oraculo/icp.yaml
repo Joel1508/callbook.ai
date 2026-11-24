@@ -1,0 +1,78 @@
+# Perfil de cliente ideal (ICP). Para otra empresa o vertical, cambia este archivo.
+vendedor:
+  empresa: Callbook AI
+  descripcion: cobranza de cartera tardía con agentes de IA (YC S26)
+  remitente: Sebastián Alfonso
+  cargo: Sales Data Farmer
+  correo_remitente: ejemplo@callbook.ai            # plantilla: lo configura el cliente
+  url_baja: https://callbook.ai/ejemplo-baja       # plantilla: lo configura el cliente
+
+vertical: Crédito masivo de ticket bajo (BNPL, microcrédito, tarjetas, neobancos)
+pais: CO
+
+# Criterios: clave, nombre y peso. Cada criterio se califica 1-5; el puntaje final va de 0 a 100.
+criterios:
+  - {clave: cartera, nombre: Volumen y crecimiento de cartera, peso: 25}
+  - {clave: dolor,   nombre: Dolor operativo en cobranza,     peso: 25}
+  - {clave: simil,   nombre: Similitud con clientes actuales, peso: 20}
+  - {clave: incl,    nombre: Población poco bancarizada,      peso: 15}
+  - {clave: ia,      nombre: Madurez para comprar IA,         peso: 15}
+
+# Si una fuente cuantitativa califica un criterio, su calificación reemplaza la del analista.
+cuantitativo_prevalece: true
+
+# Clientes actuales: nunca se prospectan.
+excluir:
+  - Sistecrédito
+  - Banco Contactar
+  - Banco W
+  - Quipux
+  - Quipu
+  - Krediya
+  - Aviva
+  - Aseguradora Solidaria
+  - Kala
+  - Epik
+  - Casse
+
+# Fuentes activas: cada una es un módulo en oraculo/sources/ con fetch(cfg, icp) -> list[Signal].
+fuentes:
+  manual_signals:
+    archivo: data/signals.json
+  superfinanciera:
+    dataset: rvii-eis8            # "Distribución de cartera por producto" (Superfinanciera, datos.gov.co)
+    dominio: www.datos.gov.co
+    criterio: cartera
+    # códigos UNICAP del formato de cartera por producto (solo renglón 5 = total de la unidad)
+    grupos:
+      consumo: [1, 2, 3, 4, 5, 6, 29, 30]
+      microcredito: [7, 8]
+    # crecimiento anual (%) -> calificación 1-5 del criterio
+    umbrales_crecimiento: [[30, 5], [15, 4], [5, 3], [0, 2]]
+    # saldo de consumo + micro en miles de millones de COP -> calificación; se usa la menor de las dos
+    umbrales_saldo: [[1000, 5], [500, 4], [100, 3], [20, 2]]
+    # nombre de la entidad en la Superfinanciera, por id de prospecto
+    entidades:
+      mibanco: Mibanco S.A.
+      tuya: Tuya
+      nu: Nu O Nu Financiera
+      rappipay: '"Rappipay"'
+      # addi: pendiente; no aparece en el dataset con corte 2026-09-30
+
+enriquecimiento:
+  proveedor: auto          # auto | hunter | apollo  (auto: Hunter y, si no hay correo, Apollo)
+  confianza_minima: 70     # bajo este puntaje de Hunter el correo se marca "baja"
+
+mensaje:
+  # Plantilla del primer contacto. {gancho} es la señal concreta de cada prospecto (data/signals.json).
+  plantilla: |
+    Hola {nombre}: {gancho} En {empresa_vendedor} hacemos {descripcion_vendedor}: nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?
+
+    {remitente} · {cargo}, {empresa_vendedor}
+    Le escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda "baja" o use {url_baja} y no volveremos a escribirle.
+  # Ventana permitida para el envío (Ley 2300: lunes a viernes 7:00-19:00, sábados 8:00-15:00; nunca domingos ni festivos)
+  ventana:
+    lunes_viernes: ["07:00", "19:00"]
+    sabado: ["08:00", "15:00"]
+  max_contactos_por_semana: 1
+  festivos: []            # fechas ISO de festivos en Colombia; no se envía esos días

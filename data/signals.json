@@ -1,0 +1,116 @@
+{
+  "_nota": "Señales públicas al 24 de noviembre de 2026. 'calificaciones' es el criterio del analista (1-5) con su porqué. Cada señal declara su fuente.",
+  "empresas": [
+    {
+      "id": "addi", "nombre": "Addi", "tipo": "BNPL · compañía de financiamiento",
+      "dominio": "addi.com", "pbx": null,
+      "gancho": "vi que Addi va a colocar más del doble de crédito este año y que están contratando para liderar un equipo de cobranza de más de 100 personas.",
+      "calificaciones": {
+        "cartera": [5, "Espera colocar $11 billones en 2026, más del doble que en 2025."],
+        "dolor": [5, "Busca Collections Manager para un equipo propio de ~110 personas."],
+        "simil": [5, "Su par Sistecrédito ya es cliente de Callbook."],
+        "incl": [4, "Crédito en punto de venta para clientes con poco historial."],
+        "ia": [5, "Su Serie D está orientada a IA y ya vende cartera como activo."]
+      },
+      "senales": [
+        {"tipo": "prensa", "texto": "Espera colocar $11 billones en crédito en 2026, más del doble que en 2025.", "criterio": "cartera", "fuente": "LatamFintech: Serie D de Addi", "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia"},
+        {"tipo": "vacante", "texto": "Busca Collections Manager para un equipo propio de ~110 personas (vacante de julio de 2026).", "criterio": "dolor", "fuente": "Vacante Collections Manager", "url": "https://swooped.co/job-postings/collections-manager-bogota-addi-5a0d6", "fecha": "2026-07"},
+        {"tipo": "venta_cartera", "texto": "Vendió cartera a Goldman Sachs: ya piensa la cartera como un activo.", "criterio": "ia", "fuente": "LatamFintech: Serie D de Addi", "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia"},
+        {"tipo": "prensa", "texto": "Mora a 90 días de 1,1 %, pero sobre ese volumen la cartera tardía crece en pesos.", "criterio": "dolor", "fuente": "LatamFintech: Serie D de Addi", "url": "https://www.latamfintech.co/articles/addi-fintech-colombiana-de-bnpl-levanta-us-86m-en-una-serie-d-para-acelerar-su-crecimiento-y-fortalecer-su-apuesta-por-la-ia"},
+        {"tipo": "similitud", "texto": "Su par Sistecrédito ya es cliente de Callbook.", "criterio": "simil", "fuente": "Base de clientes Callbook", "url": null}
+      ],
+      "decisores": [
+        {"nombre": "Jessica Alvira", "cargo": "Head of Collections · antes directora de cobro prejurídico y jurídico en Mibanco", "principal": true},
+        {"nombre": "Claudia Tabares", "cargo": "Líder de operaciones de Collections"},
+        {"nombre": "Santiago Suárez", "cargo": "Cofundador y CEO"}
+      ]
+    },
+    {
+      "id": "mibanco", "nombre": "Mibanco Colombia", "tipo": "Microcrédito · Grupo Credicorp",
+      "dominio": "mibanco.com.co", "pbx": null,
+      "gancho": "Mibanco creció su cartera más de 40 % en el último año, y ese crecimiento llega a mora tardía en 12 a 18 meses.",
+      "calificaciones": {
+        "cartera": [4, "Segundo jugador de microcrédito, ~$2,6 billones de cartera."],
+        "dolor": [4, "Clientes rurales difíciles de ubicar."],
+        "simil": [5, "Gemelo de Banco W y Banco Contactar, clientes de Callbook."],
+        "incl": [5, "Microempresarios con baja bancarización."],
+        "ia": [3, "Su Director de Operaciones participa en foros de cobranza."]
+      },
+      "senales": [
+        {"tipo": "prensa", "texto": "Segundo jugador de microcrédito del país, con ~$2,6 billones de cartera.", "criterio": "cartera", "fuente": "Valora Analitik: Credicorp y Mibanco", "url": "https://www.valoraanalitik.com/?p=582133"},
+        {"tipo": "prensa", "texto": "Su cartera creció 44,5 % anual en el primer trimestre de 2026.", "criterio": "cartera", "fuente": "Valora Analitik: metas 2026", "url": "https://www.valoraanalitik.com/mibanco-colombia-expectativas-2026/"},
+        {"tipo": "similitud", "texto": "Es el gemelo de Banco W y Banco Contactar, que ya son clientes de Callbook.", "criterio": "simil", "fuente": "Base de clientes Callbook", "url": null},
+        {"tipo": "prensa", "texto": "Atiende clientes rurales difíciles de ubicar, justo donde sirve investigar antes de contactar.", "criterio": "dolor", "fuente": "Valora Analitik: Credicorp y Mibanco", "url": "https://www.valoraanalitik.com/?p=582133"},
+        {"tipo": "evento", "texto": "Su Director de Operaciones participa en foros de cobranza (Collections Symphony).", "criterio": "ia", "fuente": "Collections Symphony", "url": null}
+      ],
+      "decisores": [
+        {"nombre": "Jorge Borrero", "cargo": "Vicepresidente de Riesgos"},
+        {"nombre": "Roderick Luna", "cargo": "Gerente de Riesgo de Crédito"},
+        {"nombre": "Gerardo Hernández", "cargo": "Director de Operaciones", "principal": true}
+      ]
+    },
+    {
+      "id": "tuya", "nombre": "Tuya", "tipo": "Tarjeta Éxito · Grupo Éxito y Bancolombia",
+      "dominio": "tuya.com.co", "pbx": null,
+      "gancho": "Tuya ya recauda casi la mitad de su cobranza por autogestión digital, algo muy poco común en el mercado; la parte que no se autogestiona suele ser la cartera tardía.",
+      "calificaciones": {
+        "cartera": [4, "Gran base de tarjetahabientes de ingreso bajo."],
+        "dolor": [4, "La cartera tardía no se autogestiona."],
+        "simil": [4, "Crédito masivo de ticket bajo, como Sistecrédito."],
+        "incl": [4, "Para ~40 % de sus clientes es su primer producto financiero."],
+        "ia": [5, "Ya recauda 47 % por autogestión digital con IA."]
+      },
+      "senales": [
+        {"tipo": "prensa", "texto": "Para ~40 % de sus clientes, la tarjeta Éxito es su primer producto financiero.", "criterio": "incl", "fuente": "Portafolio: entrevista a Tuya", "url": "https://www.portafolio.co/negocios/tenemos-potencial-para-llegar-a-8-millones-de-clientes-tuya-513921"},
+        {"tipo": "prensa", "texto": "62 % de los clientes de la Éxito Mastercard gana menos de 2 SMLV.", "criterio": "incl", "fuente": "Portafolio: entrevista a Tuya", "url": "https://www.portafolio.co/negocios/tenemos-potencial-para-llegar-a-8-millones-de-clientes-tuya-513921"},
+        {"tipo": "prensa", "texto": "Ya recauda 47 % de su cobranza por autogestión digital con IA: es un comprador validado.", "criterio": "ia", "fuente": "Impacto TIC: cobranza con IA en Tuya", "url": "https://impactotic.co/?p=111345"},
+        {"tipo": "analisis", "texto": "La oportunidad es la cartera tardía que no se autogestiona.", "criterio": "dolor", "fuente": "Análisis propio", "url": null}
+      ],
+      "decisores": [
+        {"nombre": "Natalia Serna", "cargo": "VP de Asuntos Corporativos y Cobranza", "principal": true},
+        {"nombre": "Juan Diego Giraldo", "cargo": "Cobranzas"},
+        {"nombre": "Carlos Iván Villegas", "cargo": "CEO"}
+      ]
+    },
+    {
+      "id": "nu", "nombre": "Nu Colombia", "tipo": "Neobanco · tarjeta de crédito",
+      "dominio": "nu.com.co", "pbx": null,
+      "gancho": "Nu le dio su primera tarjeta a cerca de un millón de colombianos, y esos clientes sin historial necesitan otra cobranza cuando caen en mora tardía.",
+      "calificaciones": {
+        "cartera": [5, "Más de 5 millones de clientes."],
+        "dolor": [3, "Probable que construya cobranza internamente."],
+        "simil": [3, "Neobanco; distinto a los clientes actuales."],
+        "incl": [4, "~1 millón recibió su primera tarjeta con Nu."],
+        "ia": [5, "Empresa nativa digital."]
+      },
+      "senales": [
+        {"tipo": "prensa", "texto": "Más de 5 millones de clientes en Colombia.", "criterio": "cartera", "fuente": "Nu: cinco años en Colombia", "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/"},
+        {"tipo": "prensa", "texto": "Cerca de 1 millón de personas recibió con Nu su primera tarjeta de crédito.", "criterio": "incl", "fuente": "Nu: cinco años en Colombia", "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/"},
+        {"tipo": "prensa", "texto": "Tiene una tarjeta, Abrecaminos, para quienes la banca tradicional suele rechazar.", "criterio": "incl", "fuente": "Nu: cinco años en Colombia", "url": "https://international.nubank.com.br/es/compania/nu-colombia-cumple-cinco-anos-con-5-millones-de-clientes-y-consolida-su-apuesta-de-largo-plazo-por-el-pais/"},
+        {"tipo": "analisis", "texto": "Riesgo: es probable que construya su cobranza internamente.", "criterio": "dolor", "fuente": "Análisis propio", "url": null}
+      ],
+      "decisores": [
+        {"nombre": "Marcela Torres", "cargo": "Gerente general de Nu Colombia", "principal": true}
+      ]
+    },
+    {
+      "id": "rappipay", "nombre": "RappiPay", "tipo": "Fintech · tarjeta y crédito",
+      "dominio": "rappipay.com", "pbx": null,
+      "gancho": "vi que está armando el área de cobranza de RappiPay; antes de crecer el equipo, puede valer la pena probar agentes de IA en la cartera tardía.",
+      "calificaciones": {
+        "cartera": [3, "Crédito digital de consumo, base en crecimiento."],
+        "dolor": [4, "Está construyendo el área de cobranza."],
+        "simil": [3, "Fintech de consumo."],
+        "incl": [3, "Usuarios urbanos con historial mixto."],
+        "ia": [4, "Empresa tecnológica."]
+      },
+      "senales": [
+        {"tipo": "prensa", "texto": "Contrató como gerente de cobranzas a un exdirector de cobranza de Banco de Bogotá: está construyendo el área.", "criterio": "dolor", "fuente": "Ciclo de Riesgo: movidas del sector", "url": "https://www.cicloderiesgo.com/colombia/foco/movida"},
+        {"tipo": "analisis", "texto": "Crédito digital de consumo con alta frecuencia de uso.", "criterio": "cartera", "fuente": "Análisis propio", "url": null}
+      ],
+      "decisores": [
+        {"nombre": "Mauricio Bohórquez", "cargo": "Gerente de Cobranzas", "principal": true}
+      ]
+    }
+  ]
+}
