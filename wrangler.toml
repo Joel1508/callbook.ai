@@ -1,0 +1,7 @@
+# Cloudflare Workers: sitio estático (solo assets) servido desde public/.
+# Antes de desplegar: python -m oraculo.run --icp icp.yaml  (actualiza public/prospects.json)
+name = "oraculo-callbook"
+compatibility_date = "2026-11-01"
+
+[assets]
+directory = "./public"
