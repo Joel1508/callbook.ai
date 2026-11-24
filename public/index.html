@@ -5,59 +5,58 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Oráculo de prospección Callbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* VOICE: analyst's desk — sober, ruled, decisive.
-   IDEA: a planning-office ranking sheet that re-sorts as you change the weights.
-   PICTURE: the ranked prospect table with live score bars is the picture.
-   COLOUR and TYPE: stone ground, black ink, brick accent, white panels; Schibsted Grotesk.
-   LAYOUT: title + pipeline strip, then weights beside ranking, then detail sheet. */
-:root{color-scheme:light dark;--bg:light-dark(#e7e4df,#171513);--ink:light-dark(#111,#eceae6);--mut:light-dark(#5d5a55,#a8a39b);--pan:light-dark(#fff,#211e1b);--rule:light-dark(#cfcac2,#3a3530);--brick:#c8371e;--brick2:light-dark(#f6dcd5,#3d1f18)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+/* Paleta Callbook: casi negro, paneles grafito, texto blanco, acento violeta #6D5DF6; Inter.
+   Tema claro: fondo blanco, mismo violeta. */
+:root{color-scheme:dark;--bg:#0B0B10;--ink:#FFFFFF;--mut:#A1A1B5;--pan:#15151D;--rule:#2A2A38;--acc:#6D5DF6;--acc2:#24204A;--frame:#2F2F3E}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#FFFFFF;--ink:#0B0B10;--mut:#5B5B6E;--pan:#F7F7FB;--rule:#E4E4EC;--acc2:#ECEAFE;--frame:#DCDCE6}}
+:root[data-theme="light"]{color-scheme:light;--bg:#FFFFFF;--ink:#0B0B10;--mut:#5B5B6E;--pan:#F7F7FB;--rule:#E4E4EC;--acc2:#ECEAFE;--frame:#DCDCE6}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Schibsted Grotesk",system-ui,sans-serif;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Inter",system-ui,sans-serif;overflow-x:clip}
 .band{padding:clamp(24px,4vw,56px) max(5vw,16px);max-width:1240px;margin:0 auto}
 h1{font-size:clamp(30px,4.4vw,48px);line-height:1.05;margin:6px 0 12px;font-weight:800;text-wrap:balance;max-width:22ch}
 h2{font-size:22px;margin:0 0 10px;font-weight:700}
 .kick{color:var(--mut);font-size:15px;margin:0}
 .lede{max-width:68ch;color:var(--mut);margin:0}
-.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:22px;border:1.5px solid var(--ink);background:var(--pan)}
+.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:22px;border:1px solid var(--frame);background:var(--pan);border-radius:10px;overflow:hidden}
 .pipe div{padding:12px 14px;border-right:1px solid var(--rule);font-size:14px;line-height:1.35}
 .pipe div:last-child{border-right:0}
 .pipe b{display:block;font-size:15px;margin-bottom:2px}
 .pipe span{color:var(--mut)}
 .grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
-.pan{background:var(--pan);border:1.5px solid var(--ink);padding:18px}
+.pan{background:var(--pan);border:1px solid var(--frame);border-radius:12px;padding:18px}
 label{display:block;font-size:14px;margin:12px 0 2px}
 label output{float:right;font-weight:700;font-variant-numeric:tabular-nums}
-input[type=range]{width:100%;accent-color:var(--brick);height:32px}
-.btn{font:600 15px "Schibsted Grotesk",sans-serif;min-height:44px;padding:0 16px;border:1.5px solid var(--ink);background:var(--pan);color:var(--ink);cursor:pointer}
-.btn:hover{background:var(--brick);color:#fff;border-color:var(--brick)}
-.btn:focus-visible,tr:focus-visible{outline:3px solid var(--brick);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--acc);height:32px}
+.btn{font:600 15px "Inter",sans-serif;min-height:44px;padding:0 16px;border:1.5px solid var(--acc);border-radius:8px;background:var(--acc);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.12)}
+.btn:focus-visible,tr:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 table{width:100%;border-collapse:collapse;font-size:15px}
 th{text-align:left;font-weight:700;font-size:13px;color:var(--mut);border-bottom:1.5px solid var(--ink);padding:8px 8px}
 td{border-bottom:1px solid var(--rule);padding:10px 8px;vertical-align:middle}
 tbody tr{cursor:pointer}
-tbody tr:hover{background:var(--brick2)}
-tr.sel{background:var(--brick2)}
+tbody tr:hover{background:var(--acc2)}
+tr.sel{background:var(--acc2)}
 .rk{font-weight:800;font-size:22px;width:44px}
 .nm b{display:block}.nm span{font-size:13px;color:var(--mut)}
-.bar{height:12px;background:var(--rule);position:relative}
-.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
-tr:nth-child(-n+3) .bar i{background:var(--brick)}
+.bar{height:12px;background:var(--rule);position:relative;border-radius:6px;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--mut)}
+tr:nth-child(-n+3) .bar i{background:var(--acc)}
 .sc{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;width:56px;white-space:nowrap}
-.tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--brick);padding:1px 7px;margin-left:6px;vertical-align:2px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--acc);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:2px}
 .det{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
 .det ul{margin:6px 0 0;padding-left:18px}.det li{margin:4px 0}
 .ppl div{border-bottom:1px solid var(--rule);padding:8px 0}
 .ppl div span{color:var(--mut);font-size:14px;display:block}
-.msg{white-space:pre-wrap;background:var(--bg);border-left:4px solid var(--brick);padding:12px 14px;font-size:15px;margin:8px 0 10px}
+.msg{white-space:pre-wrap;background:var(--bg);border-left:4px solid var(--acc);padding:12px 14px;font-size:15px;margin:8px 0 10px}
 .ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .ex span{border:1px solid var(--rule);background:var(--pan);padding:3px 10px;font-size:14px;text-decoration:line-through;color:var(--mut)}
 .src a{color:var(--ink)}
 .note{font-size:13px;color:var(--mut)}
 .ppl a{color:var(--ink);font-size:14px}.conf{font-size:12px;font-weight:700;border:1px solid var(--rule);padding:0 6px;margin-left:6px}
-.err{border-left:4px solid var(--brick);padding:10px 14px;background:var(--pan)}
+.dsc{margin-top:18px;border-top:1px solid var(--rule);padding-top:12px}.dsc .st{font-size:12px;font-weight:700;padding:0 7px;border-radius:4px;margin-left:6px}.st.new{background:var(--acc);color:#fff}.st.ok{border:1px solid var(--acc);color:var(--acc)}
+.err{border-left:4px solid var(--acc);padding:10px 14px;background:var(--pan)}
 .scroll{overflow-x:auto}
 @media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.det{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.pipe{grid-template-columns:minmax(0,1fr)}.pipe div{border-right:0;border-bottom:1px solid var(--rule)}.hide{display:none}table{font-size:14px}}
@@ -66,7 +65,7 @@ tr:nth-child(-n+3) .bar i{background:var(--brick)}
 </head>
 <body>
 <section class="band">
-  <p class="kick">Sebastián Alfonso · Prueba técnica Sales Data Farmer · Callbook AI</p>
+  <p class="kick">Yoel Alfonso · Prueba técnica Sales Data Farmer · Callbook AI</p>
   <h1 id="h1">Oráculo de prospección Callbook</h1>
   <p class="lede">Este oráculo convierte señales públicas en una lista priorizada de prospectos. Mueve los pesos y el ranking se recalcula. Toca una empresa para ver sus señales, sus decisores y el primer mensaje.</p>
   <div class="pipe" aria-label="Cómo funciona">
@@ -114,7 +113,7 @@ catch(e){dEl.innerHTML=`<div class="err"><b>No pude leer ${esc(url)}.</b><br>Cor
 const C=D.criterios.map(c=>({k:c.clave,n:c.nombre,d:c.peso}));
 const P=D.prospectos.map(p=>{const f=[],seen=new Set();p.senales.forEach(s=>{if(s.url&&!seen.has(s.url)){seen.add(s.url);f.push([s.fuente,s.url])}});
  return{id:p.id,n:p.nombre,t:p.tipo,r:Object.fromEntries(p.desglose.map(x=>[x.criterio,x.calificacion])),o:Object.fromEntries(p.desglose.map(x=>[x.criterio,x.origen])),
- s:p.senales.map(s=>s.texto),p:p.decisores,m:p.mensaje?p.mensaje.texto:"",slot:p.mensaje&&p.mensaje.enviar_desde,f}});
+ s:p.senales.map(s=>s.texto),p:p.decisores,d:p.descubiertos,m:p.mensaje?p.mensaje.texto:"",slot:p.mensaje&&p.mensaje.enviar_desde,f}});
 const EX=D.excluidos||[];
 const W={};C.forEach(c=>W[c.k]=c.d);
 let sel=P[0]&&P[0].id;
@@ -138,11 +137,15 @@ const person=x=>{const bits=[];
  if(x.telefono)bits.push(`PBX ${esc(x.telefono)}`);
  const rv=(x.revisar||[]).map(r=>`<span class="note">⚠ ${esc(r)}</span>`).join("");
  return `<div><b>${esc(x.nombre)}${x.principal?'<span class="tag">Primer contacto</span>':""}</b><span>${esc(x.cargo)}</span><span>${bits.join(" · ")}</span>${rv}</div>`};
+const dsc=p=>{const d=p.d;if(!d)return"";
+ const rows=d.personas.map(x=>`<div><b>${esc(x.nombre)}<span class="st ${x.nuevo?"new":"ok"}">${x.nuevo?"descubierto":"confirmado"}</span></b><span>${esc(x.cargo)} · ${esc(x.rol)}</span><span>${esc(x.correo||"sin correo")} <span class="conf">${esc(x.confianza)}${x.puntaje_confianza!=null?" · "+esc(x.puntaje_confianza):""}</span></span></div>`).join("");
+ return `<div class="dsc"><b>Descubiertos por el oráculo (Hunter Domain Search)</b><div class="ppl">${rows||'<div><span>Sin personas con cargos del ICP en este dominio.</span></div>'}</div></div>`};
 function drawD(){const p=P.find(x=>x.id===sel);if(!p)return;
  dEl.innerHTML=`<h2>${esc(p.n)} · ${score(p)}/100</h2><div class="det"><div><b>Señales</b><ul>${p.s.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
  <p style="margin:14px 0 4px"><b>Calificación por criterio</b></p><table><tbody>${C.map(c=>`<tr style="cursor:default"><td>${esc(c.n)}<br><span class="note">${esc(p.o[c.k]||"")}</span></td><td class="sc">${p.r[c.k]||1}/5</td></tr>`).join("")}</tbody></table>
  <p class="src note" style="margin-top:12px">Fuentes: ${p.f.map(f=>`<a href="${esc(f[1])}" target="_blank" rel="noopener">${esc(f[0])}</a>`).join(" · ")}</p></div>
  <div><b>Decisores e influenciadores</b><div class="ppl">${p.p.map(person).join("")}</div>
+ ${dsc(p)}
  <p style="margin:16px 0 0"><b>Primer mensaje sugerido</b></p><div class="msg" id="msg">${esc(p.m)}</div>
  <button class="btn" id="copy" type="button">Copiar mensaje</button> <span class="note" id="cst"></span>
  ${p.slot?`<p class="note">Primera ventana de envío permitida: ${esc(new Date(p.slot).toLocaleString("es-CO",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit",timeZone:"America/Bogota"}))} (hora de Bogotá).</p>`:""}</div></div>`;

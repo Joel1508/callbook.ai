@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-24T15:07:38-05:00",
+  "generado": "2026-11-24T15:11:19-05:00",
   "vendedor": "Callbook AI",
   "vertical": "Crédito masivo de ticket bajo (BNPL, microcrédito, tarjetas, neobancos)",
   "pais": "CO",
@@ -319,8 +319,8 @@
         "cargo": "Head of Collections · antes directora de cobro prejurídico y jurídico en Mibanco",
         "canal": "correo corporativo",
         "asunto": "Addi y la cartera tardía",
-        "texto": "Hola Jessica: Vi que Addi va a colocar más del doble de crédito este año y que están contratando para liderar un equipo de cobranza de más de 100 personas. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
-        "enviar_desde": "2026-11-24T15:07:00-05:00",
+        "texto": "Hola Jessica: Vi que Addi va a colocar más del doble de crédito este año y que están contratando para liderar un equipo de cobranza de más de 100 personas. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nYoel Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T15:11:00-05:00",
         "max_contactos_por_semana": 1,
         "cumplimiento": [
           {
@@ -572,23 +572,24 @@
           "telefono_tipo": null
         },
         {
-          "nombre": "Gerardo Hernández",
-          "cargo": "Director de Operaciones",
+          "nombre": "Gerardo Hernández Huertas",
+          "cargo": "Collections Manager · registrado antes como Director de Operaciones; Hunter lo lista como Gerardo Huertas",
           "principal": true,
           "correo": "g***@mibanco.com.co",
           "confianza": "media",
-          "puntaje_confianza": 83,
-          "fuente": "hunter",
-          "linkedin_url": null,
+          "puntaje_confianza": 79,
+          "fuente": "hunter domain-search",
+          "linkedin_url": "https://www.linkedin.com/in/gerardo-hernandez-operaciones",
           "dominio": "mibanco.com.co",
           "mx_valido": true,
-          "verificacion": "accept_all",
-          "cargo_coincide": null,
+          "cargo_coincide": true,
           "revisar": [
             "El servidor acepta cualquier dirección: correo inferido por patrón, no verificado"
           ],
           "telefono": null,
-          "telefono_tipo": null
+          "telefono_tipo": null,
+          "verificacion": "accept_all",
+          "cargo_proveedor": "Collections Manager"
         }
       ],
       "descubiertos": {
@@ -634,9 +635,9 @@
             "verificacion": "accept_all",
             "linkedin_url": "https://www.linkedin.com/in/gerardo-hernandez-operaciones",
             "fuente": "hunter domain-search",
-            "nuevo": true,
-            "coincide_con": null,
-            "posible_coincidencia": "Gerardo Hernández"
+            "nuevo": false,
+            "coincide_con": "Gerardo Hernández Huertas",
+            "posible_coincidencia": null
           },
           {
             "nombre": "Jose Castro",
@@ -668,17 +669,16 @@
           }
         ],
         "conocidos_no_encontrados": [
-          "Roderick Luna",
-          "Gerardo Hernández"
+          "Roderick Luna"
         ]
       },
       "mensaje": {
-        "para": "Gerardo Hernández",
-        "cargo": "Director de Operaciones",
+        "para": "Gerardo Hernández Huertas",
+        "cargo": "Collections Manager · registrado antes como Director de Operaciones; Hunter lo lista como Gerardo Huertas",
         "canal": "correo corporativo",
         "asunto": "Mibanco Colombia y la cartera tardía",
-        "texto": "Hola Gerardo: Mibanco creció su cartera más de 40 % en el último año, y ese crecimiento llega a mora tardía en 12 a 18 meses. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
-        "enviar_desde": "2026-11-24T15:07:00-05:00",
+        "texto": "Hola Gerardo: Mibanco creció su cartera más de 40 % en el último año, y ese crecimiento llega a mora tardía en 12 a 18 meses. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nYoel Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T15:11:00-05:00",
         "max_contactos_por_semana": 1,
         "cumplimiento": [
           {
@@ -960,8 +960,8 @@
         "cargo": "VP de Asuntos Corporativos y Cobranza",
         "canal": "correo corporativo",
         "asunto": "Tuya y la cartera tardía",
-        "texto": "Hola Natalia: Tuya ya recauda casi la mitad de su cobranza por autogestión digital, algo muy poco común en el mercado; la parte que no se autogestiona suele ser la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
-        "enviar_desde": "2026-11-24T15:07:00-05:00",
+        "texto": "Hola Natalia: Tuya ya recauda casi la mitad de su cobranza por autogestión digital, algo muy poco común en el mercado; la parte que no se autogestiona suele ser la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nYoel Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T15:11:00-05:00",
         "max_contactos_por_semana": 1,
         "cumplimiento": [
           {
@@ -1179,8 +1179,8 @@
         "cargo": "Gerente general de Nu Colombia",
         "canal": "correo corporativo",
         "asunto": "Nu Colombia y la cartera tardía",
-        "texto": "Hola Marcela: Nu le dio su primera tarjeta a cerca de un millón de colombianos, y esos clientes sin historial necesitan otra cobranza cuando caen en mora tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
-        "enviar_desde": "2026-11-24T15:07:00-05:00",
+        "texto": "Hola Marcela: Nu le dio su primera tarjeta a cerca de un millón de colombianos, y esos clientes sin historial necesitan otra cobranza cuando caen en mora tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nYoel Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T15:11:00-05:00",
         "max_contactos_por_semana": 1,
         "cumplimiento": [
           {
@@ -1371,8 +1371,8 @@
         "cargo": "Gerente de Cobranzas",
         "canal": "correo corporativo",
         "asunto": "RappiPay y la cartera tardía",
-        "texto": "Hola Mauricio: Vi que está armando el área de cobranza de RappiPay; antes de crecer el equipo, puede valer la pena probar agentes de IA en la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nSebastián Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
-        "enviar_desde": "2026-11-24T15:07:00-05:00",
+        "texto": "Hola Mauricio: Vi que está armando el área de cobranza de RappiPay; antes de crecer el equipo, puede valer la pena probar agentes de IA en la cartera tardía. En Callbook AI hacemos cobranza de cartera tardía con agentes de IA (YC S26): nuestros agentes investigan a cada deudor antes de contactarlo, dentro de los límites de la Ley 2300 de 2023. ¿Le interesaría conversar 20 minutos sobre un piloto con una muestra de cartera castigada?\n\nYoel Alfonso · Sales Data Farmer, Callbook AI\nLe escribo a su correo corporativo porque su cargo está relacionado con cobranza. Si prefiere no recibir más mensajes, responda \"baja\" o use https://callbook.ai/ejemplo-baja y no volveremos a escribirle.",
+        "enviar_desde": "2026-11-24T15:11:00-05:00",
         "max_contactos_por_semana": 1,
         "cumplimiento": [
           {

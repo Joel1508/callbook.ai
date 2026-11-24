@@ -21,7 +21,8 @@ flowchart LR
     R --> X{¿cliente actual?}
     X -- sí --> Z[excluido]
     X -- no --> SC[score.py<br/>0-100 ponderado y explicado]
-    SC --> E[enrich.py<br/>dominio + MX -> Hunter / Apollo]
+    SC --> DS[discover.py<br/>Hunter Domain Search -> rol]
+    DS --> E[enrich.py<br/>dominio + MX -> Hunter / Apollo]
     E --> O[outreach.py<br/>mensaje con la señal + chequeos Ley 2300]
     O --> J[out/prospects.json + public/prospects.json<br/>correos enmascarados]
     O --> C[out/prospects.csv<br/>datos completos, fuera de git]
@@ -36,6 +37,7 @@ flowchart LR
 | `sources/superfinanciera.py` | Dataset `rvii-eis8` ("Distribución de cartera por producto", mensual). Suma consumo (UNICAP 1-6, 29, 30) y microcrédito (7, 8) en el renglón total; compara con el mismo mes del año anterior; calcula saldo vencido (saldo − vigente) e ICV. Convierte crecimiento y tamaño en una calificación 1-5 (la menor de las dos, para que una base pequeña que crece 1.000 % no saque 5). |
 | `score.py` | Puntaje = Σ peso × (calificación − 1) / 4, normalizado a 100. Cada criterio devuelve calificación, puntos, origen (Superfinanciera o analista), porqué y evidencia. Si hay dato cuantitativo, prevalece sobre el analista (`cuantitativo_prevalece`). |
 | `enrich.py` | Dominio de la empresa → validación MX (dnspython) → Hunter Email Finder o Apollo `people/match`. Devuelve correo, confianza (alta/media/baja), fuente y `linkedin_url`. Nunca inventa correos: sin respuesta, queda vacío. Solo acepta correos del dominio corporativo. El único teléfono es el PBX corporativo. Marca en `revisar` los casos que necesitan una persona: cargo del proveedor distinto al nuestro (posible homónimo; baja la confianza a "baja") y dominios `accept_all` (correo inferido por patrón). Guarda las respuestas en `out/.enrich_cache.json` para no gastar créditos al repetir. |
+| `discover.py` | Antes de enrich: Hunter Domain Search por dominio (caché y tope de llamadas en `descubrimiento.max_llamadas`), filtro por palabras clave del cargo, rol (decisor, aprobador o influenciador, reglas en `icp.yaml`) y cruce con los decisores conocidos: confirmado, descubierto o posible coincidencia. Si enrich no trae correo para un decisor confirmado, usa el de Domain Search. |
 | `outreach.py` | Primer mensaje desde la plantilla del YAML con el `gancho` (la señal concreta) de cada prospecto, chequeos de cumplimiento y la primera ventana de envío permitida (hora de Bogotá). |
 | `run.py` | CLI. Escribe `out/prospects.json` (público, enmascarado) y su copia `public/prospects.json`, más `out/prospects_full.json` y `out/prospects.csv` (completos, ignorados por git). |
 
@@ -103,6 +105,25 @@ Superfinanciera, dataset [`rvii-eis8`](https://www.datos.gov.co/d/rvii-eis8) (Di
 
 Enriquecimiento (Hunter) de los seis decisores de Addi, Mibanco y Tuya: 2 correos verificados (Addi), 4 inferidos por patrón en dominios `accept_all` (Mibanco, Tuya). El correo de Natalia Serna (Tuya) quedó en confianza baja: Hunter la asocia con otro cargo y hay que confirmar en LinkedIn antes de contactarla. Los correos completos no están en el repo.
 
+### Descubiertos por el oráculo (Hunter Domain Search)
+
+3 llamadas (addi.com, mibanco.com.co, tuya.com.co), 10 resultados por dominio, filtrados por cargo. Sin correos en el repo.
+
+| Empresa | Nombre | Cargo (Hunter) | Rol | Confianza | Estado |
+|---|---|---|---|---|---|
+| Addi | Jayesh Ametha | Chief Credit Officer | aprobador | alta (95, verificado) | descubierto |
+| Addi | Juan Iranzo | Chief Financial Officer | aprobador | alta (95, verificado) | descubierto |
+| Addi | Ravish Sharma | Director of Credit Risk | decisor | alta (95, verificado) | descubierto |
+| Addi | Jessica Alvira | Collections Manager | decisor | alta (95, verificado) | confirmado |
+| Mibanco | Juan Llano | Vice President of Finance | aprobador | media (78, accept_all) | descubierto |
+| Mibanco | Jorge Borrero | Vice President of Risk | aprobador | media (79, accept_all) | confirmado |
+| Mibanco | Gerardo Hernández Huertas | Collections Manager | decisor | media (79, accept_all) | confirmado |
+| Mibanco | Jose Castro | Financial Advisor | influenciador | media (85, verificado) | descubierto |
+| Mibanco | Solange Sánchez | Head of Financial Crime Prevention | influenciador | media (84) | descubierto |
+| Tuya | Jose Guzmán | Chief Financial Officer | aprobador | media (78) | descubierto |
+
+En Tuya, Domain Search no devolvió cargos de cobranza ni riesgo; Natalia Serna y Juan Diego Giraldo siguen sin confirmar.
+
 ## Estado y pendientes
 
 - **Superfinanciera**: funcionando en vivo para Mibanco, Tuya, Nu y RappiPay (corte 2026-09-30). **Addi no aparece** en el dataset `rvii-eis8`; su criterio de cartera sigue siendo del analista. Pendiente: confirmar con qué nombre reporta (o si reporta en otro formato) y agregarlo en `fuentes.superfinanciera.entidades`.
@@ -112,6 +133,7 @@ Enriquecimiento (Hunter) de los seis decisores de Addi, Mibanco y Tuya: 2 correo
 
 - **`enrich_company`**: URL de la empresa → Firecrawl → LLM → puntaje ICP validado con esquema (Pydantic aquí, Zod en el prototipo), para cubrir empresas que no vigila la Superfinanciera.
 - **`persona_angle`**: cargo y publicaciones públicas del decisor → dolor de su área y ángulo de venta.
+- **`ask.py`**: `python -m oraculo.ask "fintechs de crédito de consumo en Colombia para una agencia de cobranza con IA"` → un LLM genera el `icp.yaml`, se valida con Pydantic y corre el pipeline completo. Pendiente de una `ANTHROPIC_API_KEY`.
 - **`sequence`**: secuencia de primer contacto (canal, momento, mensaje) que cumple la Ley 2300: solo en horarios permitidos y un canal por semana.
 - **Scraper de vacantes**: fuente `sources/vacantes.py` (LinkedIn Jobs, Computrabajo, Magneto) para cargos de cobranza; una vacante de cobranza es una señal de dolor con fecha.
 - **Prensa**: fuente `sources/prensa.py` sobre RSS de Valora Analitik, Portafolio, La República y LatamFintech, con extracción de cifras de colocación y venta de cartera.

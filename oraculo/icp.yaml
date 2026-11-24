@@ -2,7 +2,7 @@
 vendedor:
   empresa: Callbook AI
   descripcion: cobranza de cartera tardía con agentes de IA (YC S26)
-  remitente: Sebastián Alfonso
+  remitente: Yoel Alfonso
   cargo: Sales Data Farmer
   correo_remitente: ejemplo@callbook.ai            # plantilla: lo configura el cliente
   url_baja: https://callbook.ai/ejemplo-baja       # plantilla: lo configura el cliente

@@ -73,6 +73,14 @@ def build(icp: dict, signals: list[Signal], do_enrich: bool, do_discover: bool =
         decisores = enrich.enrich_company(perfil, icp.get("enriquecimiento", {})) if do_enrich else [
             {**d, "correo": None, "confianza": "no enriquecido", "fuente": None, "linkedin_url": None,
              "dominio": perfil.get("dominio"), "telefono": perfil.get("pbx")} for d in perfil.get("decisores", [])]
+        if descubiertos:  # si enrich no trajo correo, usar el de Domain Search de la misma persona
+            for d in decisores:
+                m = next((x for x in descubiertos["personas"] if x["coincide_con"] == d["nombre"] and x.get("correo")), None)
+                if m and not d.get("correo"):
+                    d.update({"correo": m["correo"], "confianza": m["confianza"], "puntaje_confianza": m["puntaje_confianza"],
+                              "fuente": m["fuente"], "verificacion": m["verificacion"], "cargo_proveedor": m["cargo"],
+                              "linkedin_url": d.get("linkedin_url") or m.get("linkedin_url")})
+                    d.update(enrich._review(d, d.get("cargo")))
         principal = next((d for d in decisores if d.get("principal")), decisores[0] if decisores else None)
         prospects.append({
             "id": cid, "nombre": perfil["nombre"], "tipo": perfil.get("tipo"), "dominio": perfil.get("dominio"),
